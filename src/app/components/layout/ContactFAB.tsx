@@ -82,18 +82,17 @@ export function ContactFAB() {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-16 h-16 rounded-full flex items-center justify-center z-10 relative group text-white outline-none bg-black shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:scale-105 active:scale-95 transition-all"
+        className="w-16 h-16 rounded-full flex items-center justify-center z-10 relative group text-white outline-none"
       >
         <motion.div
             animate={{ 
               rotate: isOpen ? 90 : 0,
-              scale: isOpen ? 1 : 1,
             }}
             transition={{ type: "spring", stiffness: 260, damping: 20 }}
-            className="flex items-center justify-center w-full h-full"
+            className="flex items-center justify-center bg-black rounded-full w-full h-full shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:scale-105 active:scale-95 transition-transform"
         >
             {isOpen ? <X size={28} /> : (
-                <div className="relative flex items-center justify-center">
+                <div className="relative flex items-center justify-center bg-black rounded-full">
                     <WhatsAppIcon size={32} />
                 </div>
             )}
