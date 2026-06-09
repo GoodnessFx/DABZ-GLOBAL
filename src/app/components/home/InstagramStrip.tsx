@@ -3,11 +3,11 @@ import { DGMark } from "../DGMark";
 
 const tiles = [
   "https://images.unsplash.com/photo-1709178295038-acbeec786fcf?w=400&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1615788189819-bee84874da4b?w=400&q=80&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&q=80&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1707438095940-1eee18e85400?w=400&q=80&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=400&q=80&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1701680853149-1b5240a95eeb?w=400&q=80&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1615788236892-040dcc5c2bd0?w=400&q=80&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&q=80&auto=format&fit=crop",
 ];
 
 export function InstagramStrip() {

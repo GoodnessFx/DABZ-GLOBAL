@@ -13,20 +13,13 @@ const navLinks = [
   { label: "Swap", href: "/#swap" },
 ];
 
-export function Navbar() {
+export function Navbar({ isScrolled }: { isScrolled?: boolean }) {
   const { state, dispatch } = useStore();
   const navigate = useNavigate();
   const location = useLocation();
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchQuery, setQuery] = useState("");
   const cartCount = state.cart.reduce((s, i) => s + i.quantity, 0);
-
-  useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", handler);
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
 
   useEffect(() => {
     setMobileOpen(false);
@@ -46,12 +39,13 @@ export function Navbar() {
 
   return (
     <>
-      <div className="fixed top-8 left-0 right-0 z-50 bg-background border-b border-border">
+      <div className={`fixed left-0 right-0 z-50 bg-background border-b border-border transition-all duration-300 ${isScrolled ? 'top-0 shadow-md' : 'top-8'}`}>
         {/* Top Header */}
         <div className="h-20 flex items-center justify-between px-4 lg:px-8 max-w-[1440px] mx-auto gap-4 lg:gap-8">
           {/* Logo */}
-          <button onClick={() => navigate("/")} className="flex-shrink-0 group">
-            <span className="font-sans font-black text-2xl lg:text-3xl tracking-tighter text-black group-hover:text-primary transition-colors">DABZ GLOBAL</span>
+          <button onClick={() => navigate("/")} className="flex-shrink-0 group flex items-center gap-2">
+            <img src="/logo.jpg" alt="Logo" className="w-8 h-8 rounded-full object-cover md:hidden" />
+            <span className="font-sans font-black text-xl sm:text-2xl lg:text-3xl tracking-tighter text-black group-hover:text-primary transition-colors">DABZ GLOBAL</span>
           </button>
 
           {/* Search Bar - Revenes Style */}
@@ -134,7 +128,7 @@ export function Navbar() {
       </div>
 
       {/* Mobile search bar - visible only on mobile */}
-      <div className="md:hidden fixed top-16 left-0 right-0 z-40 bg-background px-4 py-3 border-b border-border">
+      <div className="md:hidden fixed left-0 right-0 z-40 bg-background px-4 py-3 border-b border-border transition-all duration-300" style={{ top: isScrolled ? '80px' : '112px' }}>
         <div className="flex items-center bg-muted rounded-full px-4 py-2">
           <input
             type="text"
@@ -160,12 +154,18 @@ export function Navbar() {
                 <X size={20} />
               </button>
             </div>
-            <div className="flex flex-col flex-1 p-6 gap-6">
+            <div className="flex flex-col flex-1 p-6 gap-6 overflow-y-auto">
+              <button 
+                onClick={() => navigate("/account")}
+                className="w-full py-4 bg-black text-white text-[12px] font-black uppercase tracking-[0.2em] rounded-full hover:bg-black/80 transition-all mb-4"
+              >
+                LOGIN / REGISTER
+              </button>
               {navLinks.map((link) => (
                 <button
                   key={link.label}
                   onClick={() => handleNav(link.href)}
-                  className="text-left text-sm font-semibold uppercase tracking-widest transition-colors text-foreground"
+                  className="text-left text-sm font-semibold uppercase tracking-widest transition-colors text-foreground py-2 border-b border-border/50 last:border-0"
                   style={{ letterSpacing: "0.1em" }}
                 >
                   {link.label}

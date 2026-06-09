@@ -2,6 +2,7 @@ import { HeroCarousel } from "../components/home/HeroCarousel";
 import { TrustBar } from "../components/home/TrustBar";
 import { CategoryLinks } from "../components/home/CategoryLinks";
 import { FeaturedGrid } from "../components/home/FeaturedGrid";
+import { CollectionsShowcase } from "../components/home/CollectionsShowcase";
 import { SwapBanner } from "../components/home/SwapBanner";
 import { HotDeals } from "../components/home/HotDeals";
 import { BrandsRow } from "../components/home/BrandsRow";
@@ -14,6 +15,7 @@ export default function Home() {
     <>
       <HeroCarousel />
       <TrustBar />
+      <CollectionsShowcase />
       <CategoryLinks />
       <FeaturedGrid />
       <SwapBanner />

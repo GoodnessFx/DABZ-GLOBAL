@@ -4,6 +4,7 @@ import { useStore } from "../store/StoreContext";
 import { products } from "../data/products";
 import { formatPrice } from "../data/products";
 import { useNavigate } from "react-router";
+import { ProductCard } from "../ProductCard";
 
 const popular = ["iPhone 16", "MacBook Air", "AirPods Pro", "Samsung S25"];
 

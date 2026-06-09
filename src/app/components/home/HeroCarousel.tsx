@@ -16,7 +16,7 @@ const slides = [
     subline: "The most powerful iPhone ever. Grade A+++++ available now.",
     cta: "Shop iPhones",
     ctaHref: "/shop?category=iPhones",
-    image: "https://images.unsplash.com/photo-1727281146398-e506691c28c3?w=1920&q=80&auto=format&fit=crop",
+    image: "/one of the hero section iamge.jfif",
     imageAlt: "iPhone 16 Pro",
   },
   {
@@ -24,7 +24,7 @@ const slides = [
     subline: "MacBook, HP EliteBook, and Dell XPS. Best prices in Abuja.",
     cta: "Shop Laptops",
     ctaHref: "/shop?category=Laptops",
-    image: "https://images.unsplash.com/photo-1615788189819-bee84874da4b?w=1920&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1920&q=80&auto=format&fit=crop",
     imageAlt: "Premium Laptops",
   },
 ];
@@ -63,10 +63,13 @@ export function HeroCarousel() {
               <img
                 src={s.image}
                 alt={s.imageAlt}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain lg:object-cover bg-white"
                 loading="eager"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=1920&q=80&auto=format&fit=crop";
+                }}
               />
-              <div className="absolute inset-0 bg-white/30 backdrop-blur-[2px] lg:bg-transparent lg:backdrop-blur-none" />
+              <div className="absolute inset-0 bg-white/20 backdrop-blur-[1px] lg:bg-transparent lg:backdrop-blur-none" />
             </div>
 
             <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 lg:px-12 h-full flex items-center">
