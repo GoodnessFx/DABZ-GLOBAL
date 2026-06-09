@@ -1,0 +1,578 @@
+# DABZ GLOBAL — AI Storefront System Prompt
+### The Complete Build Specification to Outrun Revenes
+
+---
+
+## IDENTITY & MISSION
+
+You are building the official online storefront for **Dabz Global** — Abuja's most trusted phone, laptop, and accessories retailer, operating since 2019 from Suite C3, New Banex Plaza, Abuja. The brand identity is bold, dark, and authoritative: black background, white DG wordmark, clean geometric lines. Dabz Global sells iPhones, Samsung phones, MacBooks, HP, Dell laptops, AirPods, speakers, and accessories. They also swap devices. Contact: 08144343028 / 09078333831. Instagram: @dabz_global_of... Twitter/X: @dabz_global.
+
+This is not a template. This is a conversion machine — every pixel earns its place by moving product.
+
+---
+
+## VISUAL DESIGN SYSTEM
+
+### Color Palette
+- `#0A0A0A` — Site background (near black, not pure black)
+- `#FFFFFF` — Primary text, brand white
+- `#D4AF37` — Dabz Gold accent (used with extreme restraint: price highlights, sale badges, CTAs, hover states)
+- `#161616` — Card backgrounds, nav backgrounds
+- `#1E1E1E` — Section alternates, input fields
+- `#2A2A2A` — Borders, dividers
+- `#B0B0B0` — Secondary text, labels, captions
+- `#FF3B30` — Sale / urgent badge red (used only for real discount labels)
+
+### Typography
+- Display / Headlines: **Inter** (weight 800–900, tight letter-spacing -0.03em, all-caps section labels)
+- Body: **Inter** (weight 400–500, 16px base, 1.6 line-height)
+- Price: **Inter Mono** or **JetBrains Mono** — numbers in mono for price alignment
+- Product names: Inter SemiBold 600
+- Load fonts from Google Fonts CDN
+
+### Layout Philosophy
+Full-width. No containers with visible borders. Products breathe with 24px gap grids. Section transitions use thin 1px `#2A2A2A` dividers, never decorative lines. No card shadows — depth comes from background color contrast between `#0A0A0A` and `#161616`.
+
+### Signature Element
+The **DG mark** — the white geometric DG logo — appears as a giant watermark (opacity 0.03) on hero and key section backgrounds. It is the one unmistakable Dabz Global signature that no competitor can copy.
+
+---
+
+## SITE ARCHITECTURE
+
+### Pages / Views (Single-Page App with hash routing or section scrolling):
+1. Home (Landing)
+2. Shop (Product Catalog with filter/sort)
+3. Product Detail
+4. Cart
+5. Checkout
+6. Order Confirmation
+7. Account (Login / Register / My Orders / Wishlist)
+8. About / Contact
+
+---
+
+## COMPONENT SPECIFICATIONS
+
+---
+
+### 1. TOP ANNOUNCEMENT BAR
+A single slim bar (40px height) above the nav. Black background, gold text. Rotates between 3 messages on a 4-second interval:
+- "Free delivery on orders above ₦50,000 in Abuja"
+- "Swap your old device — DM or call 08144343028"
+- "Verified seller since 2019 — Suite C3 New Banex Plaza"
+
+No close button. Always visible. Subtle fade transition between messages.
+
+---
+
+### 2. NAVIGATION
+Sticky. Background: `#0A0A0A` with a 1px bottom border `#2A2A2A`. Blur backdrop on scroll (`backdrop-filter: blur(12px)` at 60% opacity). Height: 64px desktop, 56px mobile.
+
+Left: DG logo SVG (white, 36px height). Clicking takes user to home.
+
+Center (desktop): Nav links in Inter 500, 14px, uppercase letter-spacing 0.08em, color `#B0B0B0`, hover transitions to `#FFFFFF`.
+- Shop All
+- Phones
+- Laptops
+- Accessories
+- Deals
+- Swap
+
+Right cluster:
+- Search icon (magnifying glass SVG — opens full-screen search overlay)
+- WhatsApp icon (links to `https://wa.me/2348144343028`)
+- Wishlist icon (heart SVG with count badge)
+- Cart icon (bag SVG with item count badge in Dabz Gold)
+- Account icon (person SVG — opens login/account dropdown)
+
+Mobile: hamburger opens a full-height slide-in drawer from the left. Drawer shows logo at top, all nav links stacked, and contact CTA at bottom.
+
+---
+
+### 3. HERO SECTION
+Full viewport height (100vh). Dark background `#0A0A0A`. No gradients unless they serve the product photography.
+
+Structure: Auto-playing carousel (no dots — use thin progress bar at bottom of hero instead, 4px height, gold fill animating across). Interval: 5 seconds. Swipeable on mobile.
+
+Each slide:
+- Left half (desktop): Headline + subline + CTA button. Right half: High-quality product image (sourced from Unsplash/Pexels using real device photography — iPhones, Samsung phones, MacBooks).
+- Mobile: Stacked, image first, text below.
+
+Slide 1 — iPhone 17 Pro:
+- Headline: "TITANIUM. REDEFINED." (Inter Black, 72px desktop, 40px mobile, white, tight tracking)
+- Subline: "iPhone 17 Pro. Now in Abuja. Brand new, sealed." (Inter 400, 18px, `#B0B0B0`)
+- CTA: "Shop iPhones" — pill button, Dabz Gold background, black text, Inter 700
+
+Slide 2 — MacBook:
+- Headline: "POWER IN YOUR HANDS."
+- Subline: "MacBook Air, HP, Dell — new and UK used. Built for work."
+- CTA: "Shop Laptops"
+
+Slide 3 — Swap Offer:
+- Headline: "YOUR OLD PHONE HAS VALUE."
+- Subline: "Swap your device and upgrade today. Call us or slide in our DMs."
+- CTA: "Start a Swap" (WhatsApp link)
+
+Image sourcing: Use Unsplash Source API with queries like `?query=iphone+pro&w=900` or `?query=macbook+laptop&w=900` for real photography. Never placeholder colors. Never AI-generated imagery.
+
+DG watermark: The DG logo SVG at 12% opacity, centered, behind all hero content.
+
+---
+
+### 4. TRUST BAR (Below Hero)
+3-column row on dark `#161616` background, 80px tall, 1px border top and bottom `#2A2A2A`.
+
+Each column: SVG icon left (24px, white stroke) + short text right.
+
+Icons must be proper SVG path icons — not emoji, not unicode characters. Use Lucide or Heroicons SVG code inline:
+- Truck icon: "Same-Day Delivery in Abuja"
+- Refresh/cycle arrows icon: "Easy Swap & Returns"
+- Headset icon: "24/7 Support — WhatsApp or Call"
+
+On mobile: Horizontal scroll row. No wrapping.
+
+---
+
+### 5. CATEGORY QUICK LINKS
+Section title: "SHOP BY CATEGORY" — Inter 700, 11px, letter-spacing 0.15em, color `#B0B0B0`, uppercase. No decorative elements around it.
+
+6 category cards in a horizontal scroll row (desktop: 6 across, mobile: scroll):
+- iPhones
+- Samsung
+- MacBooks
+- Laptops (HP / Dell)
+- AirPods & Earphones
+- Accessories
+
+Each card: Dark `#161616` background, 160x160px square, category name in Inter 700 14px white at bottom, product image centered (Unsplash sourced). On hover: 1px Dabz Gold border, image scales up 1.04x. Clicking filters the Shop section.
+
+---
+
+### 6. FEATURED / NEW ARRIVALS PRODUCT GRID
+Section title: "NEW IN" — same label treatment as above.
+
+Sub-tabs (filter pills): All | iPhones | Samsung | Laptops | Accessories
+Active pill: Gold background, black text. Inactive: `#1E1E1E` background, `#B0B0B0` text.
+
+Product grid: 4 columns desktop, 2 columns mobile. Gap: 16px.
+
+**Product Card:**
+- Background: `#161616`
+- No box shadow. No rounded corners larger than 4px.
+- Top: Product image, 1:1 ratio, `object-fit: contain`, dark background (`#0A0A0A`)
+- Top-left badge: "NEW" in Inter 700 10px, white text, `#161616` background with 1px `#2A2A2A` border. If sale: "SALE" badge in `#FF3B30` background instead.
+- Top-right: Wishlist heart icon — toggles on click, fills gold when active
+- Bottom section (padding 16px):
+  - Product name: Inter 600, 14px, white, 2-line clamp
+  - Condition label: "Brand New" or "UK Used" — Inter 400 12px `#B0B0B0`
+  - Storage/color options (if multiple): small pill selectors
+  - Price row: `₦1,050,000` in Inter Mono 700 18px white. If discounted: old price in `#B0B0B0` strikethrough 14px beside it.
+  - Add to Cart button: Full width, `#1E1E1E` background, white text, Inter 600 13px, uppercase. On hover: Dabz Gold background, black text. 300ms ease transition.
+
+Pagination: "Load More" button at bottom, not paginated pages. Loads 8 more cards. Spinner during load.
+
+---
+
+### 7. SWAP CTA BANNER
+Full-width section, `#161616` background. No image. Pure typography play.
+
+Large display text left-aligned:
+```
+HAVE AN OLD DEVICE?
+LET'S MAKE A DEAL.
+```
+Inter Black 900, 56px desktop, 32px mobile. White.
+
+Right side: Two CTA buttons stacked:
+- "WhatsApp Us" — gold background, black text
+- "Call 08144343028" — transparent, white border, white text
+
+This converts browsers who aren't buying new but want to swap.
+
+---
+
+### 8. HOT DEALS SECTION
+Section title: "HOT DEALS" — same label treatment, with a live-looking countdown timer beside it (optional: 24h countdown that resets, creating urgency without deception).
+
+Same product card grid but products marked with the red SALE badge and a strikethrough original price.
+
+---
+
+### 9. BRAND LOGOS ROW
+Title: "BRANDS WE CARRY"
+Horizontal scrolling row of brand logos (Apple, Samsung, Dell, HP, Sony, JBL, Oraimo) — white SVG logos on `#0A0A0A` background. Auto-scroll animation (marquee loop). Clicking a brand logo filters the shop.
+
+---
+
+### 10. SOCIAL PROOF / TESTIMONIALS
+Section title: "WHAT CUSTOMERS SAY"
+
+3 testimonial cards, `#161616` background. No star ratings in image form — render 5 stars as actual SVG path stars filled gold. Customer name, short review text (2–3 lines), product purchased.
+
+Below cards: "138K+ followers on Twitter | Trusted since 2019" — social proof stat in Inter 700 24px white, centered.
+
+---
+
+### 11. INSTAGRAM FEED STRIP
+Title: "FOLLOW @DABZ_GLOBAL_OF"
+6 square image tiles in a row (use placeholder dark images with DG mark until connected). On hover: dark overlay + Instagram icon centered. Clicking opens instagram in new tab.
+
+---
+
+### 12. FOOTER
+Background: `#0A0A0A`. Top border: 1px `#2A2A2A`.
+
+4-column layout desktop:
+
+Column 1: DG logo + tagline "Abuja's most trusted gadget store since 2019." + Social icons (Twitter, Instagram, WhatsApp) as SVG icons, not emoji.
+
+Column 2: Quick Links
+- Shop All
+- iPhones
+- MacBooks
+- Accessories
+- Hot Deals
+
+Column 3: Customer Service
+- How to Swap
+- Delivery Info
+- Return Policy
+- Contact Us
+- FAQs
+
+Column 4: Contact
+- Suite C3, New Banex Plaza, Abuja
+- 08144343028
+- 09078333831
+- @dabz_global on Twitter
+
+Bottom bar: `#0D0D0D`, centered text "© 2025 Dabz Global. All rights reserved." + payment icons row: Visa, Mastercard, Bank Transfer, Cash on Delivery — rendered as flat SVG, no color.
+
+---
+
+## PRODUCT DETAIL PAGE
+
+Layout: Left half — image gallery. Right half — product info.
+
+Image gallery:
+- Main large image (80% of left column height)
+- Thumbnail strip below (3–4 images, clicking changes main image)
+- Zoom on hover (CSS transform scale within overflow hidden container)
+
+Product info right column:
+- Category breadcrumb: "Home / Phones / iPhones" in `#B0B0B0` 12px
+- Product name: Inter 700, 28px, white
+- Condition badge: "Brand New" or "UK Used" — pill label
+- Rating: Gold star SVGs + review count
+- Price: Inter Mono 800, 32px, white
+- If discounted: old price struck, savings amount in gold "Save ₦50,000"
+- Storage/color variant selectors: pill buttons. Active: gold background black text. Inactive: `#1E1E1E`.
+- Quantity selector: minus / number input / plus — `#1E1E1E` background
+- Add to Cart: Full width, Dabz Gold background, black text, Inter 700 16px, 56px height
+- WhatsApp to Order: Secondary button, WhatsApp green (`#25D366`), white text, WhatsApp SVG icon inline
+- Add to Wishlist: text link with heart icon
+
+Below: 3-tab section (Product Description | Specifications | Reviews). Tab underline in gold for active. Content in Inter 400 16px `#B0B0B0`.
+
+Related Products: 4-card grid "You Might Also Like" section at bottom.
+
+---
+
+## CART
+
+Right-side slide-in drawer (not a full page). Opens when cart icon is clicked.
+
+Header: "YOUR CART (3 items)" — Inter 700 18px white. X to close.
+
+Cart item row:
+- Product thumbnail (60x60px, `#0A0A0A` bg)
+- Product name + variant (color, storage)
+- Price in Inter Mono
+- Quantity +/- controls
+- Remove (trash icon)
+
+Bottom:
+- Subtotal row: Inter 600, total in gold
+- Shipping note: "Free delivery in Abuja on orders ₦50,000+"
+- "Proceed to Checkout" — full width gold button
+- "Continue Shopping" — text link
+
+---
+
+## CHECKOUT PAGE
+
+Clean, distraction-free. No nav, minimal footer. Just logo at top center.
+
+2-column layout: Left (form) — Right (order summary, sticky on desktop).
+
+Left form sections (step-by-step with visual progress dots at top):
+
+Step 1 — Contact:
+- Full Name
+- Phone Number
+- Email Address
+- "or order via WhatsApp" link
+
+Step 2 — Delivery:
+- Delivery address fields (Address Line 1, City, State)
+- Delivery option: "Same-Day Abuja" (green badge) / "Nationwide" / "Pick Up at Store"
+
+Step 3 — Payment:
+- Payment options as visual card selectors:
+  - Bank Transfer (show account details on select)
+  - Pay on Delivery
+  - Card (future implementation placeholder — show "Coming Soon" badge)
+
+Right: Order summary. Sticky. Product list with images, subtotal, delivery fee, total in Inter Mono gold.
+
+"Place Order" button: Gold, full width, Inter 800 16px, 60px height.
+
+On submit: Show loading spinner in button, then redirect to confirmation page.
+
+---
+
+## ORDER CONFIRMATION
+
+Clean centered layout.
+
+Animated checkmark SVG (draw-on animation, gold stroke).
+Heading: "ORDER CONFIRMED"
+Sub: "We'll contact you on [phone] to arrange delivery."
+Order number: DG-2025-XXXX
+"Continue Shopping" button.
+WhatsApp CTA: "Track your order via WhatsApp"
+
+---
+
+## ACCOUNT / AUTH
+
+Login and Register as two tabs in a centered card (`#161616` bg, no border-radius over 8px).
+
+Login: Phone/Email + Password + "Forgot Password?" link.
+Register: Full Name + Phone + Email + Password + Confirm Password.
+
+"My Account" dashboard:
+- My Orders (list with status badges: Processing | Shipped | Delivered in color-coded pills)
+- My Wishlist (product grid of saved items)
+- My Profile (edit name, phone, email)
+- Saved Addresses
+
+---
+
+## SEARCH OVERLAY
+
+Full-screen takeover, `rgba(10,10,10,0.97)` background. ESC to close.
+
+Centered search input (Inter 500, 24px, white, no border — just a 2px bottom border in `#2A2A2A`). 
+
+Live results appear below input as user types — product cards in a 3-column grid. If no results: "No products found. Try 'iPhone 15' or 'AirPods'."
+
+Popular searches: Chips showing "iPhone 16", "MacBook Air", "AirPods", "Samsung S25" — clicking populates and runs search.
+
+---
+
+## FUNCTIONAL REQUIREMENTS (State Management)
+
+All state managed in-memory (React useState / useReducer or vanilla JS objects):
+
+**Cart State:**
+```json
+{
+  "items": [
+    {
+      "id": "iphone-16-128gb-black",
+      "name": "iPhone 16 128GB",
+      "variant": { "storage": "128GB", "color": "Black" },
+      "price": 950000,
+      "quantity": 1,
+      "image": "url"
+    }
+  ],
+  "total": 950000,
+  "itemCount": 1
+}
+```
+
+**User / Auth State:**
+```json
+{
+  "isLoggedIn": false,
+  "user": null,
+  "wishlist": [],
+  "orders": []
+}
+```
+
+Cart persisted to localStorage with try/catch wrapper. Wishlist persisted to localStorage.
+
+---
+
+## PERFORMANCE RULES
+
+- Images: Always use `loading="lazy"` on below-fold images. Hero images `loading="eager"`.
+- Use `srcset` or Unsplash w= parameter for responsive images.
+- CSS transitions maximum 300ms. No janky transitions over 400ms.
+- Fonts: Load Inter from Google Fonts with `display=swap`.
+- No unused CSS. No 3MB component libraries for a spinner.
+- Skeleton loaders (not spinners) for product grids — show `#1E1E1E` shimmer boxes while loading.
+
+---
+
+## CONVERSION OPTIMIZATION RULES (Non-Negotiable)
+
+These are not suggestions — they are requirements:
+
+1. **WhatsApp on every product page.** Phone buyers in Nigeria trust WhatsApp. Every product has a "Order via WhatsApp" button that opens a pre-filled message: "Hi Dabz Global, I'm interested in [Product Name]. Please confirm availability and price."
+
+2. **Sticky Add-to-Cart on mobile product pages.** When user scrolls below the buy button, a fixed bottom bar appears with product name, price, and "Add to Cart" button.
+
+3. **Sale countdown timer on Hot Deals section.** Psychological urgency. Resets every 24 hours.
+
+4. **"Only X left in stock" labels.** Show on product cards when stock is low (configurable threshold: 3 or fewer units).
+
+5. **"Recently Viewed" section.** Appears on home page after user views any product. Stored in localStorage.
+
+6. **Condition filter at the top of shop.** Brand New vs UK Used. Major buying decision for Nigerian consumers — make it the most prominent filter.
+
+7. **Price range filter.** Slider input: ₦0 to ₦2,500,000. Many buyers are budget-conscious.
+
+8. **Trust signals on checkout page.** Small row at top of checkout: padlock icon + "Secure Checkout" | checkmark + "100% Trusted" | phone icon + "Need help? Call 08144343028"
+
+9. **Cart abandonment intercept.** If user moves to close the tab with items in cart, `beforeunload` prompt (browser default is fine — just register the handler when cart has items).
+
+10. **Product comparison.** Checkbox on product cards: "Add to Compare." Floating compare bar at bottom (max 3 products). Side-by-side comparison modal.
+
+---
+
+## RESPONSIVE BREAKPOINTS
+
+- Desktop: 1280px+
+- Tablet: 768px–1279px (2-column product grid, condensed nav)
+- Mobile: 320px–767px (1-column product grid for accessories, 2-column for phones)
+
+---
+
+## SAMPLE PRODUCT DATA
+
+Seed the store with these real products at launch:
+
+```javascript
+const products = [
+  {
+    id: "iphone-16-128gb",
+    name: "iPhone 16 128GB",
+    category: "iPhones",
+    brand: "Apple",
+    condition: "Brand New",
+    price: 950000,
+    originalPrice: null,
+    storage: ["128GB", "256GB", "512GB"],
+    colors: ["Black", "White", "Ultramarine", "Pink", "Teal"],
+    inStock: true,
+    stockCount: 8,
+    featured: true,
+    isNew: true,
+    images: ["https://images.unsplash.com/photo-1726082746926-..."]
+  },
+  {
+    id: "iphone-15-pro-256gb",
+    name: "iPhone 15 Pro 256GB",
+    category: "iPhones",
+    brand: "Apple",
+    condition: "UK Used",
+    price: 820000,
+    originalPrice: 900000,
+    featured: true,
+    isHotDeal: true
+  },
+  {
+    id: "samsung-s25-ultra",
+    name: "Samsung Galaxy S25 Ultra",
+    category: "Samsung",
+    brand: "Samsung",
+    condition: "Brand New",
+    price: 1450000,
+    featured: true
+  },
+  {
+    id: "macbook-air-m2",
+    name: "MacBook Air M2 256GB",
+    category: "Laptops",
+    brand: "Apple",
+    condition: "UK Used",
+    price: 750000
+  },
+  {
+    id: "airpods-pro-2",
+    name: "AirPods Pro 2nd Gen",
+    category: "Accessories",
+    brand: "Apple",
+    condition: "Brand New",
+    price: 165000
+  },
+  {
+    id: "samsung-s24-dual",
+    name: "Samsung Galaxy S24 (Dual SIM)",
+    category: "Samsung",
+    brand: "Samsung",
+    condition: "Brand New",
+    price: 850000
+  }
+]
+```
+
+---
+
+## TECH STACK (Recommended)
+
+**If building as React artifact:**
+- React with hooks (useState, useReducer, useContext)
+- Tailwind utility classes where available, otherwise inline styles or CSS-in-JS
+- Lucide React for all icons (no emoji, no unicode symbols, no AI slop icons)
+- Recharts if any data visualization needed
+- All in a single `.jsx` file with default export
+
+**If building as HTML artifact:**
+- Single HTML file, CSS in `<style>` block, JS in `<script>` block
+- Inter from Google Fonts CDN
+- SVG icons inline (Heroicons / Lucide SVG paths)
+- No external UI framework dependencies
+
+**External image sourcing:**
+Use Unsplash for hero and category images:
+```
+https://images.unsplash.com/photo-[ID]?w=900&q=80&auto=format&fit=crop
+```
+Apple/Samsung/laptop specific photos: search Unsplash for real device photography.
+
+---
+
+## WHAT BEATS REVENES
+
+Revenes has good product coverage but suffers from:
+- WordPress bloat — slow page transitions
+- Generic WooCommerce product cards
+- No real brand personality (could be any Nigerian phone shop)
+- Weak mobile experience
+- No device swap flow
+- No live WhatsApp integration per product
+
+Dabz Global wins with:
+- Instant-load single-page experience
+- Dabz Global visual identity (DG mark, black + gold) baked into every pixel
+- WhatsApp ordering on every product (Nigerian market behavior)
+- Swap CTA prominently placed (Dabz's unique selling point)
+- Condition filter (Brand New vs UK Used) as a primary UX element, not buried
+- Real trust signals (138K followers, since 2019, Suite C3 location)
+- Countdown urgency + low-stock labels + sticky mobile cart bar
+- Skeleton loaders, not spinners — perceived speed
+- Compare feature — helps high-consideration buyers decide without leaving
+
+---
+
+## FINAL INSTRUCTION TO THE BUILDER
+
+Build every feature. Ship no placeholders. Every button should do something — even if it shows a mock state. The WhatsApp link must work. The cart must add, increment, decrement, and remove. The search must filter. The filters must apply. The wishlist must persist to localStorage. The checkout must collect and display the order. The confirmation page must render.
+
+This is a real business with 138,000 followers and a physical store. Build it like lives depend on it.
