@@ -215,9 +215,9 @@ export default function ProductDetail() {
             <div className="flex flex-col gap-3">
               <button
                 onClick={handleAddToCart}
-                className={`w-full h-14 font-bold uppercase tracking-widest text-sm flex items-center justify-center gap-2 transition-all duration-200 ${
-                  added ? "bg-green-600 text-white" : "bg-primary text-primary-foreground hover:opacity-90"
-                }`}
+                className={`w-full h-14 font-black uppercase tracking-widest text-sm flex items-center justify-center gap-2 transition-all duration-300 border-2 border-black ${
+                  added ? "bg-green-600 border-green-600 text-white" : "bg-white text-black hover:bg-black hover:text-white"
+                } rounded-full shadow-xl hover:scale-[1.02]`}
               >
                 <ShoppingBag size={16} />
                 {added ? "Added to Cart!" : "Add to Cart"}

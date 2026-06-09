@@ -33,43 +33,49 @@ function Stars() {
 
 export function Testimonials() {
   return (
-    <section className="px-6 lg:px-12 py-32 bg-white border-y border-border">
-      <div className="max-w-[1440px] mx-auto flex flex-col items-center text-center">
-        <h2 className="text-4xl lg:text-5xl font-black uppercase tracking-tighter text-black mb-4">
-          Customer Reviews.
-        </h2>
-        <div className="w-24 h-1.5 bg-black mb-12" />
-
-        <div className="flex flex-col items-center gap-2 mb-12">
-          <span className="text-sm font-black uppercase tracking-[0.2em] text-foreground">EXCELLENT</span>
-          <Stars />
-          <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Based on 150+ reviews</p>
-          <div className="mt-2">
-            <span className="text-xl font-black font-sans tracking-tighter">
-              <span className="text-[#4285F4]">G</span>
-              <span className="text-[#EA4335]">o</span>
-              <span className="text-[#FBBC05]">o</span>
-              <span className="text-[#4285F4]">g</span>
-              <span className="text-[#34A853]">l</span>
-              <span className="text-[#EA4335]">e</span>
-            </span>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-          {testimonials.map((t, i) => (
-            <div key={i} className="p-8 bg-background shadow-sm flex flex-col gap-4 text-left border border-border/50 group hover:border-primary transition-all duration-500">
-              <Stars />
-              <p className="text-sm leading-relaxed text-foreground font-medium italic">&ldquo;{t.text}&rdquo;</p>
-              <div className="mt-auto pt-6 border-t border-border flex items-center justify-between">
-                <div>
-                  <p className="text-[11px] font-black uppercase tracking-widest text-foreground">{t.name}</p>
-                  <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mt-0.5">{t.date}</p>
-                </div>
-                <div className="w-5 h-5 bg-[#4285F4] rounded-full flex items-center justify-center text-[10px] font-bold text-white">G</div>
-              </div>
+    <section className="px-6 lg:px-12 py-24 bg-[#F8F8F8]">
+      <div className="max-w-[1200px] mx-auto bg-white p-12 lg:p-20 shadow-2xl border border-border">
+        <div className="flex flex-col items-center text-center">
+          <h2 className="text-4xl lg:text-5xl font-black uppercase tracking-tighter text-black mb-4">
+            Customer Reviews.
+          </h2>
+          <p className="text-sm font-medium text-black/40 mb-12">What our customers are saying on our <a href="https://google.com" target="_blank" rel="noreferrer" className="text-blue-600 underline">Google Business Profile</a>.</p>
+          
+          <div className="flex flex-col items-center gap-2 mb-16">
+            <span className="text-sm font-black uppercase tracking-[0.2em] text-black">EXCELLENT</span>
+            <Stars />
+            <p className="text-[10px] font-bold text-black/40 uppercase tracking-widest">Based on 150+ reviews</p>
+            <div className="mt-4">
+              <span className="text-3xl font-black font-sans tracking-tighter">
+                <span className="text-[#4285F4]">G</span>
+                <span className="text-[#EA4335]">o</span>
+                <span className="text-[#FBBC05]">o</span>
+                <span className="text-[#4285F4]">g</span>
+                <span className="text-[#34A853]">l</span>
+                <span className="text-[#EA4335]">e</span>
+              </span>
             </div>
-          ))}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full relative">
+            {testimonials.map((t, i) => (
+              <div key={i} className="p-8 bg-black text-white rounded-2xl flex flex-col gap-6 text-left border border-white/10 group transition-all duration-500 hover:-translate-y-2">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-sm font-black text-white uppercase">{t.name[0]}</div>
+                    <div>
+                      <p className="text-[12px] font-black uppercase tracking-widest text-white">{t.name}</p>
+                      <p className="text-[10px] font-bold text-white/60 uppercase tracking-widest mt-0.5">{t.product}</p>
+                      <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mt-0.5">{t.date}</p>
+                    </div>
+                  </div>
+                  <div className="w-6 h-6 bg-[#4285F4] rounded-full flex items-center justify-center text-[10px] font-bold text-white">G</div>
+                </div>
+                <Stars />
+                <p className="text-sm leading-relaxed text-white/80 font-medium italic">&ldquo;{t.text}&rdquo;</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

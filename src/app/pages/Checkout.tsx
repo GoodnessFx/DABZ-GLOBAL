@@ -180,7 +180,7 @@ export default function Checkout() {
             <button
               onClick={handleSubmit}
               disabled={loading}
-              className="flex-1 py-4 text-sm font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all duration-200 bg-primary text-primary-foreground h-[60px]"
+              className="flex-1 py-4 text-sm font-black uppercase tracking-widest flex items-center justify-center gap-2 transition-all duration-300 bg-white text-black border-2 border-black h-[60px] rounded-full shadow-xl hover:bg-black hover:text-white"
             >
               {loading ? (
                 <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />

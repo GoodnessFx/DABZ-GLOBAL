@@ -82,7 +82,7 @@ export default function Account() {
                     <span className="text-[10px] font-black text-black/40 group-hover:text-black uppercase tracking-[0.2em] transition-colors">Remember me</span>
                   </label>
                 </div>
-                <button type="submit" className="w-fit px-16 py-4 bg-[#999999] text-white font-black text-xs uppercase tracking-[0.3em] hover:bg-black transition-all rounded-lg shadow-xl">
+                <button type="submit" className="w-fit px-16 py-4 bg-white text-black border-2 border-black font-black text-xs uppercase tracking-[0.3em] hover:bg-black hover:text-white transition-all rounded-lg shadow-xl">
                   LOG IN
                 </button>
                 <button type="button" className="text-[10px] font-black text-black/40 hover:text-black uppercase tracking-[0.2em] transition-colors text-left">
@@ -126,7 +126,7 @@ export default function Account() {
                     Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our privacy policy.
                   </p>
                 </div>
-                <button type="submit" className="w-fit px-16 py-4 bg-[#999999] text-white font-black text-xs uppercase tracking-[0.3em] hover:bg-black transition-all rounded-lg shadow-xl">
+                <button type="submit" className="w-fit px-16 py-4 bg-white text-black border-2 border-black font-black text-xs uppercase tracking-[0.3em] hover:bg-black hover:text-white transition-all rounded-lg shadow-xl">
                   REGISTER
                 </button>
               </form>
@@ -140,7 +140,7 @@ export default function Account() {
   return (
     <div className="min-h-screen pt-40 pb-20 bg-white">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between mb-16 border-b-4 border-black pb-8">
+        <div className="flex items-center justify-between mb-16 border-b-2 border-black pb-8">
           <div>
             <h1 className="text-4xl font-black uppercase tracking-tighter text-black">
               My Account.

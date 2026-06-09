@@ -22,9 +22,9 @@ export function AnnouncementBar() {
   }, []);
 
   return (
-    <div className="w-full flex items-center justify-center text-center px-4 bg-foreground h-8 z-[60] relative">
+    <div className="w-full flex items-center justify-center text-center px-4 bg-white border-b border-border h-8 z-[60] relative">
       <p
-        className="text-[10px] font-black uppercase tracking-[0.3em] text-background"
+        className="text-[10px] font-black uppercase tracking-[0.3em] text-black"
         style={{
           transition: "opacity 400ms ease",
           opacity: visible ? 1 : 0,

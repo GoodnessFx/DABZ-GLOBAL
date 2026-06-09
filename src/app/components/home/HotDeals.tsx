@@ -43,7 +43,7 @@ export function HotDeals() {
           {[pad(h), pad(m), pad(s)].map((v, i) => (
             <div key={i} className="flex items-center gap-2">
               <span
-                className="inline-block px-3 py-1.5 text-sm font-black bg-black text-white min-w-[40px] rounded shadow-lg"
+                className="inline-block px-3 py-1.5 text-sm font-black bg-white text-black border border-black min-w-[40px] rounded shadow-sm"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {v}

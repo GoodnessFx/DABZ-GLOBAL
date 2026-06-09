@@ -23,7 +23,7 @@ export function InstagramStrip() {
         {tiles.map((src, i) => (
           <a
             key={i}
-            href="https://instagram.com/dabz_global_of"
+            href="https://instagram.com/dabz_global_official"
             target="_blank"
             rel="noreferrer"
             className="relative group flex-shrink-0 overflow-hidden w-40 h-40 bg-card"

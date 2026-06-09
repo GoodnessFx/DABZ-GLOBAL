@@ -12,6 +12,7 @@ export default function About() {
           </h1>
           <p className="text-base leading-relaxed max-w-2xl text-muted-foreground">
             Since 2019, Dabz Global has been Abuja's go-to destination for premium phones, laptops, and accessories.
+            Sales of phone (iPhones,Samsung), Laptop (MacBook,Hp,Dell) & Accessories (speakers, airPods) We Swap🔀. <br /><br />
             Operating from Suite C3, New Banex Plaza, we've built a community of over 138,000 loyal customers across Nigeria.
           </p>
         </div>
@@ -26,7 +27,7 @@ export default function About() {
               { icon: Truck, title: "Same-Day Delivery", desc: "Order before 2pm and receive your device the same day within Abuja. Free on orders ₦50,000+." },
             ].map(({ icon: Icon, title, desc }) => (
               <div key={title} className="p-6 bg-card">
-                <Icon size={24} className="text-primary mb-4" />
+                <Icon size={48} strokeWidth={1} className="text-primary mb-4" />
                 <h3 className="text-sm font-bold mb-2 text-foreground">{title}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">{desc}</p>
               </div>
@@ -39,7 +40,7 @@ export default function About() {
           <p className="text-[11px] font-bold uppercase tracking-[0.15em] mb-8 text-muted-foreground">How to Swap</p>
           <div className="flex flex-col gap-4">
             {[
-              "Contact us via WhatsApp or call 08144343028 with your device details.",
+              "Contact us via WhatsApp or call 08144343028 / 09078333831 with your device details.",
               "Our team will assess your device and provide a fair trade-in value.",
               "Visit Suite C3, New Banex Plaza with your device, or arrange a meetup in Abuja.",
               "Complete the swap and pick up your new device same day.",
@@ -91,14 +92,13 @@ export default function About() {
                 href="https://twitter.com/dabz_global"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center gap-2 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-200"
-                style={{ background: "#1E1E1E", color: "#FFFFFF", border: "1px solid #2A2A2A" }}
+                className="flex items-center justify-center gap-2 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-200 bg-white text-black border border-border hover:bg-black hover:text-white"
               >
-                <Twitter size={16} />
+                <XIcon size={16} />
                 @dabz_global
               </a>
               <a
-                href="https://instagram.com/dabz_global_of"
+                href="https://instagram.com/dabz_global_official"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center justify-center gap-2 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-200"

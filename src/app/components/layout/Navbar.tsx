@@ -46,12 +46,12 @@ export function Navbar() {
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
+      <div className="fixed top-8 left-0 right-0 z-50 bg-background border-b border-border">
         {/* Top Header */}
-        <div className="h-16 flex items-center justify-between px-4 lg:px-8 max-w-[1440px] mx-auto gap-4 lg:gap-8">
+        <div className="h-20 flex items-center justify-between px-4 lg:px-8 max-w-[1440px] mx-auto gap-4 lg:gap-8">
           {/* Logo */}
           <button onClick={() => navigate("/")} className="flex-shrink-0 group">
-            <span className="font-sans font-black text-3xl tracking-tighter text-black group-hover:text-primary transition-colors">DABZ GLOBAL</span>
+            <span className="font-sans font-black text-2xl lg:text-3xl tracking-tighter text-black group-hover:text-primary transition-colors">DABZ GLOBAL</span>
           </button>
 
           {/* Search Bar - Revenes Style */}
@@ -60,9 +60,14 @@ export function Navbar() {
               <input
                 type="text"
                 placeholder="Find your dream device..."
-                className="bg-transparent border-none outline-none flex-1 text-sm text-black font-medium placeholder:text-black/20"
+                className="bg-transparent border-none outline-none flex-1 text-sm text-black font-black placeholder:text-black/20"
                 value={searchQuery}
                 onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    dispatch({ type: "SET_SEARCH_OPEN", payload: true });
+                  }
+                }}
               />
               <button onClick={() => dispatch({ type: "TOGGLE_SEARCH" })}>
                 <Search size={20} className="text-black/20 hover:text-black transition-colors" />
@@ -71,19 +76,19 @@ export function Navbar() {
           </div>
 
           {/* Right Icons */}
-          <div className="flex items-center gap-6 lg:gap-10">
+          <div className="flex items-center gap-4 lg:gap-8">
             <div className="flex items-center gap-4 hidden sm:flex">
               <a href="tel:08144343028" className="text-black/40 hover:text-black transition-colors">
                 <Phone size={22} strokeWidth={1.5} />
               </a>
               <a href="https://wa.me/2348144343028" target="_blank" rel="noreferrer" className="text-black/40 hover:text-[#25D366] transition-colors">
-                <MessageCircle size={22} strokeWidth={1.5} />
+                <MessageCircle size={22} strokeWidth="1.5" />
               </a>
             </div>
             
             <button 
               onClick={() => navigate("/account")}
-              className="px-6 py-2 bg-[#F8F8F8] text-black text-[10px] font-black uppercase tracking-[0.2em] rounded-full hover:bg-black hover:text-white transition-all hidden lg:block"
+              className="px-6 py-2 bg-white text-black border border-black text-[10px] font-black uppercase tracking-[0.2em] rounded-full hover:bg-black hover:text-white transition-all hidden lg:block"
             >
               LOGIN
             </button>
@@ -95,7 +100,7 @@ export function Navbar() {
               <div className="relative">
                 <ShoppingBag size={22} strokeWidth={1.5} />
                 {cartCount > 0 && (
-                  <span className="absolute -top-2 -right-2 w-5 h-5 bg-black text-white text-[10px] font-black rounded-full flex items-center justify-center border-2 border-white">
+                  <span className="absolute -top-2 -right-2 w-5 h-5 bg-white text-black text-[10px] font-black rounded-full flex items-center justify-center border-2 border-black">
                     {cartCount}
                   </span>
                 )}
@@ -125,9 +130,6 @@ export function Navbar() {
               {link.label}
             </button>
           ))}
-          <div className="ml-4 border-l border-border pl-6">
-            <ModeToggle />
-          </div>
         </div>
       </div>
 
@@ -148,8 +150,8 @@ export function Navbar() {
       {/* Mobile drawer */}
       {mobileOpen && (
         <div className="fixed inset-0 z-50 flex">
-          <div className="absolute inset-0 bg-black/70" onClick={() => setMobileOpen(false)} />
-          <div className="relative flex flex-col w-72 h-full bg-card border-r border-border">
+          <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
+          <div className="relative flex flex-col w-72 h-full bg-white border-r border-border shadow-2xl">
             <div className="flex items-center justify-between p-6 border-b border-border">
               <svg height="24" viewBox="0 0 80 32" fill="none">
                 <text x="0" y="26" className="font-sans font-black text-3xl fill-foreground" letterSpacing="-1">DG</text>

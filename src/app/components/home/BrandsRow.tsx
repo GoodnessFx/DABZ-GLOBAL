@@ -14,24 +14,21 @@ export function BrandsRow() {
   const navigate = useNavigate();
 
   return (
-    <section className="py-20 bg-white border-y border-border overflow-hidden">
-      <div className="flex flex-col items-center gap-6 mb-12 px-6 lg:px-12 text-center">
-        <h2 className="text-sm font-black uppercase tracking-[0.4em] text-black">
-          OUR PREMIUM BRANDS
-        </h2>
-        <div className="w-20 h-1 bg-black" />
-      </div>
+    <section className="py-12 bg-background border-t border-border overflow-hidden">
+      <p className="text-[11px] font-bold uppercase tracking-[0.15em] mb-8 px-6 lg:px-10 text-muted-foreground">
+        Brands We Carry
+      </p>
       <div className="relative">
         <div
-          className="flex items-center gap-20 animate-marquee"
+          className="flex items-center gap-16 animate-marquee"
           style={{ width: "max-content" }}
         >
           {[...brands, ...brands].map((brand, i) => (
             <button
               key={i}
               onClick={() => navigate(`/shop?brand=${brand.filter}`)}
-              className="flex-shrink-0 transition-all duration-300 text-3xl lg:text-5xl font-black uppercase tracking-tighter text-black/5 hover:text-black"
-              style={{ fontFamily: "Inter, sans-serif" }}
+              className="flex-shrink-0 transition-all duration-200 text-xl font-black uppercase tracking-wider text-muted-foreground hover:text-foreground"
+              style={{ letterSpacing: "0.05em", fontFamily: "Inter, sans-serif" }}
             >
               {brand.name}
             </button>
