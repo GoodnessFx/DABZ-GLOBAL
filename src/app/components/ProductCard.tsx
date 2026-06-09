@@ -48,121 +48,77 @@ export function ProductCard({ product, onNavigate }: { product: Product; onNavig
       className="group relative cursor-pointer flex flex-col bg-background border border-transparent hover:border-border transition-all duration-300"
       onClick={handleClick}
     >
-      {/* Image */}
-      <div className="relative overflow-hidden bg-muted/30 aspect-square flex items-center justify-center p-4">
+      {/* Image Container */}
+      <div className="relative overflow-hidden bg-muted/10 aspect-[3/4] flex items-center justify-center p-4">
         {!imgLoaded && (
-          <div className="absolute inset-0 animate-pulse bg-muted" />
+          <div className="absolute inset-0 animate-pulse bg-muted/20" />
         )}
         <img
           src={product.images[0]}
           alt={product.name}
           loading="lazy"
-          className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+          className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
           onLoad={() => setImgLoaded(true)}
           style={{ opacity: imgLoaded ? 1 : 0, transition: "opacity 300ms" }}
         />
         
-        {/* Quick Add Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-background/80 backdrop-blur-sm hidden lg:block">
+        {/* Hover Action Bar */}
+        <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-black z-10">
           <button 
-            className="w-full py-2 bg-foreground text-background text-[10px] font-black uppercase tracking-widest hover:bg-primary hover:text-primary-foreground transition-all"
-            onClick={(e) => { e.stopPropagation(); handleAddToCart(); }}
+            className="w-full py-3 text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-primary hover:text-primary-foreground transition-all flex items-center justify-center gap-2"
+            onClick={(e) => { e.stopPropagation(); handleAddToCart(e); }}
           >
-            QUICK ADD
+            <ShoppingBag size={12} />
+            QUICK VIEW
           </button>
         </div>
-      </div>
 
-      {/* Info */}
-      <div className="p-4 flex flex-col gap-1 text-center">
-        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground truncate">
-          {product.brand}
-        </p>
-        <h3 className="text-sm font-bold text-foreground truncate uppercase tracking-tight">
-          {product.name}
-        </h3>
-        <div className="flex items-center justify-center gap-2 mt-1">
-          <span className="text-sm font-black text-foreground font-sans">
-            ₦{product.price.toLocaleString()}
-          </span>
+        {/* Badges */}
+        <div className="absolute top-3 left-3 flex flex-col gap-1 z-10">
           {product.originalPrice && (
-            <span className="text-xs text-muted-foreground line-through">
-              ₦{product.originalPrice.toLocaleString()}
+            <span className="px-2 py-1 bg-black text-white text-[9px] font-black uppercase tracking-widest rounded-full">
+              On Sale
             </span>
           )}
         </div>
-      </div>
 
-      {/* Badges */}
-      <div className="absolute top-3 left-3 flex flex-col gap-1">
-        {product.isHotDeal && (
-          <span className="px-2 py-0.5 bg-[#FF3B30] text-white text-[9px] font-black uppercase tracking-widest">
-            HOT
-          </span>
-        )}
-        {product.isNew && (
-          <span className="px-2 py-0.5 bg-foreground text-background text-[9px] font-black uppercase tracking-widest">
-            NEW
-          </span>
-        )}
-      </div>
-    </div>
-  );
-        {/* Compare */}
+        {/* Wishlist */}
         <button
-          onClick={handleCompare}
-          className="absolute bottom-2 right-2 p-1.5 rounded-full transition-colors opacity-0 group-hover:opacity-100"
-          style={{ background: isCompared ? "#D4AF37" : "rgba(10,10,10,0.7)" }}
-          aria-label="Add to compare"
-          title="Compare"
+          onClick={handleWishlist}
+          className="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur-sm text-muted-foreground hover:text-primary transition-colors shadow-sm z-10"
         >
-          <GitCompare size={14} style={{ color: isCompared ? "#0A0A0A" : "#B0B0B0" }} />
+          <Heart size={14} className={isWishlisted ? "fill-primary text-primary" : ""} />
         </button>
       </div>
 
-      {/* Info */}
-      <div className="flex flex-col flex-1 p-4 gap-2">
-        <div>
-          <p className="text-[10px] font-medium uppercase tracking-widest" style={{ color: "#B0B0B0" }}>
-            {product.condition}
-          </p>
-          <h3
-            className="text-sm font-semibold leading-snug mt-0.5"
-            style={{ color: "#FFFFFF", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}
-          >
+      {/* Info Section */}
+      <div className="p-4 flex flex-col gap-3">
+        {/* Colors Swatches (Placeholder) */}
+        <div className="flex items-center gap-1.5 justify-center mb-1">
+          {product.colors?.slice(0, 4).map((color, i) => (
+            <div 
+              key={i} 
+              className="w-3 h-3 rounded-full border border-border shadow-sm"
+              style={{ backgroundColor: color.toLowerCase() }}
+            />
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-1 text-center">
+          <h3 className="text-xs font-bold text-foreground group-hover:text-primary transition-colors uppercase tracking-tight">
             {product.name}
           </h3>
-        </div>
-
-        {/* Price */}
-        <div className="flex items-baseline gap-2 mt-auto">
-          <span className="font-bold text-base" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#FFFFFF" }}>
-            {formatPrice(product.price)}
-          </span>
-          {product.originalPrice && (
-            <span className="text-xs line-through" style={{ fontFamily: "'JetBrains Mono', monospace", color: "#B0B0B0" }}>
-              {formatPrice(product.originalPrice)}
+          <div className="flex items-center justify-center gap-2">
+            <span className="text-sm font-black text-foreground font-sans">
+              ₦{product.price.toLocaleString()}
             </span>
-          )}
+            {product.originalPrice && (
+              <span className="text-xs text-muted-foreground line-through font-medium">
+                ₦{product.originalPrice.toLocaleString()}
+              </span>
+            )}
+          </div>
         </div>
-
-        {/* Add to Cart */}
-        <button
-          onClick={handleAddToCart}
-          className="w-full py-2.5 text-xs font-semibold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 mt-1"
-          style={{ background: "#1E1E1E", color: "#FFFFFF", borderRadius: "2px" }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = "#D4AF37";
-            e.currentTarget.style.color = "#0A0A0A";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = "#1E1E1E";
-            e.currentTarget.style.color = "#FFFFFF";
-          }}
-        >
-          <ShoppingBag size={13} />
-          Add to Cart
-        </button>
       </div>
     </div>
   );

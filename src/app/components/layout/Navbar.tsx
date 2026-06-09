@@ -50,55 +50,60 @@ export function Navbar() {
         {/* Top Header */}
         <div className="h-16 flex items-center justify-between px-4 lg:px-8 max-w-[1440px] mx-auto gap-4 lg:gap-8">
           {/* Logo */}
-          <button onClick={() => navigate("/")} className="flex-shrink-0">
-            <span className="font-sans font-black text-2xl tracking-tighter text-foreground">DABZ GLOBAL</span>
+          <button onClick={() => navigate("/")} className="flex-shrink-0 group">
+            <span className="font-sans font-black text-3xl tracking-tighter text-black group-hover:text-primary transition-colors">DABZ GLOBAL</span>
           </button>
 
           {/* Search Bar - Revenes Style */}
           <div className="hidden md:flex flex-1 max-w-2xl relative">
-            <div className="w-full flex items-center bg-muted rounded-full px-5 py-2.5 border border-transparent focus-within:border-primary transition-all">
+            <div className="w-full flex items-center bg-[#F8F8F8] rounded-full px-8 py-3.5 border-2 border-transparent focus-within:border-black focus-within:bg-white transition-all shadow-sm">
               <input
                 type="text"
                 placeholder="Find your dream device..."
-                className="bg-transparent border-none outline-none flex-1 text-sm text-foreground placeholder:text-muted-foreground"
+                className="bg-transparent border-none outline-none flex-1 text-sm text-black font-medium placeholder:text-black/20"
                 value={searchQuery}
                 onChange={(e) => setQuery(e.target.value)}
               />
               <button onClick={() => dispatch({ type: "TOGGLE_SEARCH" })}>
-                <Search size={18} className="text-muted-foreground hover:text-foreground transition-colors" />
+                <Search size={20} className="text-black/20 hover:text-black transition-colors" />
               </button>
             </div>
           </div>
 
           {/* Right Icons */}
-          <div className="flex items-center gap-3 lg:gap-5">
-            <a href="tel:08144343028" className="text-muted-foreground hover:text-foreground transition-colors hidden sm:block">
-              <Phone size={20} />
-            </a>
-            <a href="https://wa.me/2348144343028" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-[#25D366] transition-colors hidden sm:block">
-              <MessageCircle size={20} />
-            </a>
+          <div className="flex items-center gap-6 lg:gap-10">
+            <div className="flex items-center gap-4 hidden sm:flex">
+              <a href="tel:08144343028" className="text-black/40 hover:text-black transition-colors">
+                <Phone size={22} strokeWidth={1.5} />
+              </a>
+              <a href="https://wa.me/2348144343028" target="_blank" rel="noreferrer" className="text-black/40 hover:text-[#25D366] transition-colors">
+                <MessageCircle size={22} strokeWidth={1.5} />
+              </a>
+            </div>
             
             <button 
               onClick={() => navigate("/account")}
-              className="px-4 py-1.5 bg-muted text-foreground text-xs font-bold uppercase rounded hover:bg-primary hover:text-primary-foreground transition-all hidden lg:block"
+              className="px-6 py-2 bg-[#F8F8F8] text-black text-[10px] font-black uppercase tracking-[0.2em] rounded-full hover:bg-black hover:text-white transition-all hidden lg:block"
             >
               LOGIN
             </button>
 
             <button 
               onClick={() => dispatch({ type: "TOGGLE_CART" })}
-              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+              className="flex items-center gap-3 text-black/40 hover:text-black transition-colors group"
             >
               <div className="relative">
-                <ShoppingBag size={20} />
+                <ShoppingBag size={22} strokeWidth={1.5} />
                 {cartCount > 0 && (
-                  <span className="absolute -top-2 -right-2 w-4 h-4 bg-primary text-primary-foreground text-[10px] font-bold rounded-full flex items-center justify-center">
+                  <span className="absolute -top-2 -right-2 w-5 h-5 bg-black text-white text-[10px] font-black rounded-full flex items-center justify-center border-2 border-white">
                     {cartCount}
                   </span>
                 )}
               </div>
-              <span className="text-xs font-bold hidden sm:block">CART / ₦{state.cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0).toLocaleString()}</span>
+              <div className="flex flex-col items-start leading-none hidden sm:flex">
+                <span className="text-[10px] font-black uppercase tracking-widest text-black/40 group-hover:text-black transition-colors">CART</span>
+                <span className="text-xs font-black text-black mt-0.5">₦{state.cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0).toLocaleString()}</span>
+              </div>
             </button>
 
             <button
@@ -110,18 +115,19 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Bottom Nav Links - Revenes Style */}
-        <div className="hidden lg:flex items-center justify-center gap-8 py-3 border-t border-border/50">
+        <div className="hidden lg:flex items-center justify-center gap-10 py-4 border-t border-border/50">
           {navLinks.map((link) => (
             <button
               key={link.label}
               onClick={() => handleNav(link.href)}
-              className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors"
+              className="text-[11px] font-black uppercase tracking-[0.2em] text-black/40 hover:text-black transition-colors"
             >
               {link.label}
             </button>
           ))}
-          <ModeToggle />
+          <div className="ml-4 border-l border-border pl-6">
+            <ModeToggle />
+          </div>
         </div>
       </div>
 

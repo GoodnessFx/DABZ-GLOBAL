@@ -12,11 +12,14 @@ const tiles = [
 
 export function InstagramStrip() {
   return (
-    <section className="py-12 bg-background border-t border-border">
-      <p className="text-[11px] font-bold uppercase tracking-[0.15em] mb-6 px-6 lg:px-10 text-muted-foreground">
-        Follow @DABZ_GLOBAL_OF
-      </p>
-      <div className="flex gap-1 overflow-x-auto px-6 lg:px-10 pb-2">
+    <section className="py-24 bg-white">
+      <div className="flex flex-col items-center gap-6 mb-12 px-6 lg:px-12 text-center">
+        <h2 className="text-sm font-black uppercase tracking-[0.4em] text-black">
+          FOLLOW @DABZ_GLOBAL_OFFICIAL
+        </h2>
+        <div className="w-20 h-1 bg-black" />
+      </div>
+      <div className="flex gap-2 overflow-x-auto px-6 lg:px-12 pb-4 scrollbar-hide">
         {tiles.map((src, i) => (
           <a
             key={i}

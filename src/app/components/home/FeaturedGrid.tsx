@@ -14,16 +14,12 @@ export function FeaturedGrid() {
   const visible = filtered.slice(0, visibleCount);
 
   return (
-    <section className="px-6 lg:px-12 py-16 bg-background">
-      <div className="flex flex-col items-center gap-6 mb-12">
-        <button 
-          onClick={() => navigate("/shop")}
-          className="group flex items-center gap-2 text-sm lg:text-base font-black uppercase tracking-[0.2em] text-foreground hover:text-primary transition-colors"
-        >
-          CHECK ALL LATEST ADDITIONS
-          <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-        </button>
-        <div className="w-full max-w-xs h-0.5 bg-border" />
+    <section className="px-6 lg:px-12 py-24 bg-white">
+      <div className="flex flex-col items-center gap-6 mb-20 text-center">
+        <h2 className="text-4xl lg:text-5xl font-black uppercase tracking-tighter text-black">
+          New on Dabz Global.
+        </h2>
+        <div className="w-24 h-1.5 bg-black" />
       </div>
 
       <div className="flex items-center justify-center gap-4 mb-10 overflow-x-auto pb-4 scrollbar-hide">

@@ -6,11 +6,14 @@ export function CategoryLinks() {
   const navigate = useNavigate();
 
   return (
-    <section className="px-6 lg:px-10 py-16 bg-background">
-      <p className="text-[11px] font-bold uppercase tracking-[0.15em] mb-8 text-muted-foreground">
-        Shop by Category
-      </p>
-      <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+    <section className="px-6 lg:px-12 py-20 bg-background border-t border-border">
+      <div className="flex flex-col items-center gap-6 mb-16 text-center">
+        <h2 className="text-3xl lg:text-4xl font-black uppercase tracking-tight text-black">
+          Shop by Category.
+        </h2>
+        <div className="w-20 h-1 bg-black" />
+      </div>
+      <div className="flex gap-4 lg:gap-8 overflow-x-auto pb-8 scrollbar-hide">
         {categories.map((cat) => (
           <CategoryCard key={cat.slug} cat={cat} onClick={() => navigate(`/shop?category=${cat.filter}`)} />
         ))}
@@ -27,25 +30,25 @@ function CategoryCard({ cat, onClick }: { cat: typeof categories[0]; onClick: ()
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={`flex-shrink-0 relative overflow-hidden flex flex-col items-center justify-end rounded-sm border transition-all duration-200 ${
-        hovered ? "border-primary" : "border-border"
-      } bg-card`}
+      className={`flex-shrink-0 relative overflow-hidden flex flex-col items-center justify-end rounded-lg border-2 transition-all duration-500 ${
+        hovered ? "border-black scale-[1.02] shadow-2xl" : "border-border shadow-sm"
+      } bg-white`}
       style={{
-        width: "160px",
-        height: "160px",
+        width: "220px",
+        height: "220px",
       }}
     >
       <img
         src={cat.image}
         alt={cat.name}
         loading="lazy"
-        className="absolute inset-0 w-full h-full object-contain p-4 transition-transform duration-300"
+        className="absolute inset-0 w-full h-full object-contain p-8 transition-transform duration-700"
         style={{
-          transform: hovered ? "scale(1.04)" : "scale(1)",
+          transform: hovered ? "scale(1.1)" : "scale(1)",
         }}
       />
-      <div className="relative z-10 w-full px-3 pb-3 pt-8 bg-gradient-to-t from-card/95 via-card/60 to-transparent">
-        <p className="text-sm font-bold text-foreground">{cat.name}</p>
+      <div className="relative z-10 w-full px-4 pb-6 pt-12 bg-gradient-to-t from-white via-white/80 to-transparent">
+        <p className="text-xs font-black uppercase tracking-[0.2em] text-black">{cat.name}</p>
       </div>
     </button>
   );

@@ -33,14 +33,12 @@ function Stars() {
 
 export function Testimonials() {
   return (
-    <section className="px-6 lg:px-12 py-20 bg-muted/30 border-y border-border">
-      <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
-        <h2 className="text-2xl lg:text-3xl font-black uppercase tracking-tight text-foreground mb-2">
+    <section className="px-6 lg:px-12 py-32 bg-white border-y border-border">
+      <div className="max-w-[1440px] mx-auto flex flex-col items-center text-center">
+        <h2 className="text-4xl lg:text-5xl font-black uppercase tracking-tighter text-black mb-4">
           Customer Reviews.
         </h2>
-        <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-10">
-          What our customers are saying on our <span className="text-primary underline cursor-pointer">Google Business Profile</span>
-        </p>
+        <div className="w-24 h-1.5 bg-black mb-12" />
 
         <div className="flex flex-col items-center gap-2 mb-12">
           <span className="text-sm font-black uppercase tracking-[0.2em] text-foreground">EXCELLENT</span>

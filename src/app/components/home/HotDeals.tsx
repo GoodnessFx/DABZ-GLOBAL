@@ -33,21 +33,23 @@ export function HotDeals() {
   if (deals.length === 0) return null;
 
   return (
-    <section className="px-6 lg:px-10 py-16 bg-background border-t border-border">
-      <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-8">
-        <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-muted-foreground">Hot Deals</p>
-        <div className="flex items-center gap-1">
-          <span className="text-xs font-medium mr-2 text-muted-foreground">Ends in:</span>
+    <section className="px-6 lg:px-12 py-20 bg-background border-t border-border">
+      <div className="flex flex-col items-center text-center gap-4 mb-16">
+        <h2 className="text-3xl lg:text-4xl font-black uppercase tracking-tight text-black">
+          Hot Deals.
+        </h2>
+        <div className="flex items-center gap-3">
+          <span className="text-[10px] font-black uppercase tracking-widest text-black/40">Ends in:</span>
           {[pad(h), pad(m), pad(s)].map((v, i) => (
-            <span key={i} className="flex items-center gap-1">
+            <div key={i} className="flex items-center gap-2">
               <span
-                className="inline-block px-2 py-1 text-sm font-bold bg-destructive text-white min-w-[36px] text-center"
-                style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                className="inline-block px-3 py-1.5 text-sm font-black bg-black text-white min-w-[40px] rounded shadow-lg"
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {v}
               </span>
-              {i < 2 && <span className="font-bold text-destructive">:</span>}
-            </span>
+              {i < 2 && <span className="font-black text-black">:</span>}
+            </div>
           ))}
         </div>
       </div>

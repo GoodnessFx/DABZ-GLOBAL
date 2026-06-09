@@ -11,11 +11,14 @@ export function RecentlyViewed() {
   if (recent.length === 0) return null;
 
   return (
-    <section className="px-6 lg:px-10 py-16 bg-background border-t border-border">
-      <p className="text-[11px] font-bold uppercase tracking-[0.15em] mb-8 text-muted-foreground">
-        Recently Viewed
-      </p>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+    <section className="px-6 lg:px-12 py-20 bg-background border-t border-border">
+      <div className="flex flex-col items-center gap-6 mb-12">
+        <h2 className="text-sm font-black uppercase tracking-[0.3em] text-black">
+          RECENTLY VIEWED
+        </h2>
+        <div className="w-20 h-1 bg-black" />
+      </div>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
         {recent.slice(0, 4).map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

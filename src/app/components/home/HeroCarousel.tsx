@@ -1,45 +1,41 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router";
-import { DGMark } from "../DGMark";
 import { MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
-    headline: "TITANIUM.\nREDEFINED.",
-    subline: "iPhone 17 Pro. Now in Abuja. Brand new, sealed.",
-    cta: "Shop iPhones",
-    ctaHref: "/shop?category=iPhones",
-    image: "https://images.unsplash.com/photo-1709178295038-acbeec786fcf?w=900&q=80&auto=format&fit=crop",
-    imageAlt: "iPhone Pro",
+    headline: "GALAXY S26 SERIES.\nGALAXY AI IS HERE.",
+    subline: "Experience the future of mobile with the new S26 Ultra.",
+    cta: "Order Now",
+    ctaHref: "/shop?category=Samsung",
+    image: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=900&q=80&auto=format&fit=crop",
+    imageAlt: "Samsung Galaxy S26 Ultra",
   },
   {
-    headline: "POWER IN\nYOUR HANDS.",
-    subline: "MacBook Air, HP, Dell — new and UK used. Built for work.",
+    headline: "IPHONE 16 PRO.\nHELLO, APPLE INTELLIGENCE.",
+    subline: "The most powerful iPhone ever. Grade A+++++ available now.",
+    cta: "Shop iPhones",
+    ctaHref: "/shop?category=iPhones",
+    image: "https://images.unsplash.com/photo-1727281146398-e506691c28c3?w=900&q=80&auto=format&fit=crop",
+    imageAlt: "iPhone 16 Pro",
+  },
+  {
+    headline: "PREMIUM LAPTOPS.\nBUILT FOR PROS.",
+    subline: "MacBook, HP EliteBook, and Dell XPS. Best prices in Abuja.",
     cta: "Shop Laptops",
     ctaHref: "/shop?category=Laptops",
     image: "https://images.unsplash.com/photo-1615788189819-bee84874da4b?w=900&q=80&auto=format&fit=crop",
-    imageAlt: "MacBook laptop",
-  },
-  {
-    headline: "YOUR OLD PHONE\nHAS VALUE.",
-    subline: "Swap your device and upgrade today. Call us or slide in our DMs.",
-    cta: "Start a Swap",
-    ctaHref: "https://wa.me/2348144343028?text=Hi%20Dabz%20Global%2C%20I%27m%20interested%20in%20swapping%20my%20device.",
-    ctaExternal: true,
-    image: "https://images.unsplash.com/photo-1707438095940-1eee18e85400?w=900&q=80&auto=format&fit=crop",
-    imageAlt: "Smartphones for swap",
+    imageAlt: "Premium Laptops",
   },
 ];
 
 export function HeroCarousel() {
   const [current, setCurrent] = useState(0);
-  const [progress, setProgress] = useState(0);
   const navigate = useNavigate();
-  const INTERVAL = 5000;
+  const INTERVAL = 6000;
 
   const next = useCallback(() => {
     setCurrent((c) => (c + 1) % slides.length);
-    setProgress(0);
   }, []);
 
   useEffect(() => {
@@ -47,21 +43,10 @@ export function HeroCarousel() {
     return () => clearInterval(timer);
   }, [next]);
 
-  useEffect(() => {
-    setProgress(0);
-    const start = Date.now();
-    const raf = requestAnimationFrame(function tick() {
-      const elapsed = Date.now() - start;
-      setProgress(Math.min((elapsed / INTERVAL) * 100, 100));
-      if (elapsed < INTERVAL) requestAnimationFrame(tick);
-    });
-    return () => cancelAnimationFrame(raf);
-  }, [current]);
-
   const slide = slides[current];
 
   function handleCta() {
-    if (slide.ctaExternal) {
+    if (slide.ctaHref.startsWith('http')) {
       window.open(slide.ctaHref, "_blank", "noreferrer");
     } else {
       navigate(slide.ctaHref);
@@ -69,47 +54,44 @@ export function HeroCarousel() {
   }
 
   return (
-    <section className="relative w-full h-[60vh] lg:h-[80vh] overflow-hidden bg-background pt-32 lg:pt-0">
-      <div className="absolute inset-0 flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${current * 100}%)` }}>
-        {slides.map((slide, i) => (
+    <section className="relative w-full h-[70vh] lg:h-[85vh] overflow-hidden bg-[#F2F2F2] mt-16 md:mt-0">
+      <div className="absolute inset-0 flex transition-transform duration-1000 cubic-bezier(0.4, 0, 0.2, 1)" style={{ transform: `translateX(-${current * 100}%)` }}>
+        {slides.map((s, i) => (
           <div key={i} className="min-w-full h-full relative flex items-center justify-center overflow-hidden">
-            {/* Background Image/Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-muted/50 to-background z-0" />
-            
-            <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 lg:px-12 flex flex-col lg:flex-row items-center justify-between gap-8 h-full">
+            <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 lg:px-12 flex flex-col lg:flex-row items-center justify-between gap-12 h-full py-12 lg:py-0">
               {/* Text Content */}
-              <div className="flex flex-col gap-4 lg:gap-6 max-w-xl text-center lg:text-left order-2 lg:order-1">
-                <p className="text-xs lg:text-sm font-black uppercase tracking-[0.3em] text-primary">
-                  {slide.subline.split('.')[0]}
-                </p>
+              <div className="flex flex-col gap-4 lg:gap-8 max-w-xl text-center lg:text-left order-2 lg:order-1 animate-in fade-in slide-in-from-bottom-8 duration-1000">
                 <h1
-                  className="leading-none uppercase text-foreground"
+                  className="leading-[1.1] uppercase text-black"
                   style={{
                     fontFamily: "Inter, sans-serif",
                     fontWeight: 900,
-                    fontSize: "clamp(32px, 5vw, 64px)",
-                    letterSpacing: "-0.04em",
+                    fontSize: "clamp(36px, 6vw, 80px)",
+                    letterSpacing: "-0.05em",
                     whiteSpace: "pre-line",
                   }}
                 >
-                  {slide.headline}
+                  {s.headline}
                 </h1>
-                <div className="flex justify-center lg:justify-start mt-2">
+                <p className="text-sm lg:text-lg font-medium text-black/60 uppercase tracking-[0.2em]">
+                  {s.subline}
+                </p>
+                <div className="flex justify-center lg:justify-start mt-4">
                   <button
                     onClick={handleCta}
-                    className="flex items-center gap-2 px-10 py-4 bg-foreground text-background font-black text-xs uppercase tracking-widest hover:bg-primary hover:text-primary-foreground transition-all"
+                    className="px-12 py-5 bg-black text-white font-black text-xs uppercase tracking-[0.3em] hover:bg-primary hover:text-primary-foreground transition-all duration-300 rounded-full shadow-2xl"
                   >
-                    {slide.cta}
+                    {s.cta}
                   </button>
                 </div>
               </div>
 
-              {/* Prominent Phone Image */}
-              <div className="flex-1 flex items-center justify-center h-full max-h-[40vh] lg:max-h-full order-1 lg:order-2">
+              {/* Prominent Image */}
+              <div className="flex-1 flex items-center justify-center h-full max-h-[40vh] lg:max-h-[70vh] order-1 lg:order-2 animate-in fade-in zoom-in-95 duration-1000">
                 <img
-                  src={slide.image}
-                  alt={slide.imageAlt}
-                  className="w-full h-full object-contain transform scale-110 lg:scale-125 hover:scale-110 transition-transform duration-700"
+                  src={s.image}
+                  alt={s.imageAlt}
+                  className="w-full h-full object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]"
                   loading="eager"
                 />
               </div>
@@ -121,25 +103,25 @@ export function HeroCarousel() {
       {/* Navigation Arrows */}
       <button 
         onClick={() => setCurrent((c) => (c === 0 ? slides.length - 1 : c - 1))}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 text-muted-foreground hover:text-foreground transition-colors hidden lg:block"
+        className="absolute left-8 top-1/2 -translate-y-1/2 z-20 p-4 text-black/20 hover:text-black transition-colors hidden lg:block"
       >
-        <ChevronLeft size={48} strokeWidth={1} />
+        <ChevronLeft size={64} strokeWidth={1} />
       </button>
       <button 
         onClick={() => setCurrent((c) => (c === slides.length - 1 ? 0 : c + 1))}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 text-muted-foreground hover:text-foreground transition-colors hidden lg:block"
+        className="absolute right-8 top-1/2 -translate-y-1/2 z-20 p-4 text-black/20 hover:text-black transition-colors hidden lg:block"
       >
-        <ChevronRight size={48} strokeWidth={1} />
+        <ChevronRight size={64} strokeWidth={1} />
       </button>
 
-      {/* Progress Dots */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
+      {/* Navigation Bars */}
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4">
         {slides.map((_, i) => (
           <button
             key={i}
-            onClick={() => { setCurrent(i); setProgress(0); }}
-            className={`h-1 transition-all duration-300 ${
-              i === current ? "w-12 bg-foreground" : "w-6 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+            onClick={() => setCurrent(i)}
+            className={`h-1 transition-all duration-500 rounded-full ${
+              i === current ? "w-24 bg-black" : "w-12 bg-black/10 hover:bg-black/20"
             }`}
             aria-label={`Go to slide ${i + 1}`}
           />
